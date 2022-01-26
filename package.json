@@ -1,0 +1,51 @@
+{
+  "name": "learn-prisma-graphql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "lint": "eslint src",
+    "lint:fix": "eslint --fix src && yarn format",
+    "lint:strict": "eslint --max-warnings=0 src",
+    "type:check": "tsc --noEmit --incremental false",
+    "format:check": "prettier -c src",
+    "format": "prettier -w src",
+    "prepare": "husky install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-express": "^3.6.2",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "graphql": "^15.3.0",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@types/express": "^4.17.13",
+    "@types/node": "^17.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-import-resolver-typescript": "^2.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "husky": "^7.0.0",
+    "lint-staged": "^12.3.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "^4.5.5"
+  },
+  "lint-staged": {
+    "**/*.ts": [
+      "yarn prettier --write"
+    ]
+  }
+}
