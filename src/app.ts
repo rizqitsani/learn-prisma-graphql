@@ -4,6 +4,7 @@ import { ApolloServer } from 'apollo-server-express';
 import cors from 'cors';
 import express from 'express';
 import { buildSchema } from 'type-graphql';
+import Container from 'typedi';
 
 import config from '@/config';
 import HelloResolver from '@/resolvers/hello.resolver';
@@ -11,6 +12,7 @@ import HelloResolver from '@/resolvers/hello.resolver';
 const startServer = async () => {
   const schema = await buildSchema({
     resolvers: [HelloResolver],
+    container: Container,
   });
 
   const apolloServer = new ApolloServer({ schema });
