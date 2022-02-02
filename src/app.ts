@@ -7,11 +7,12 @@ import { buildSchema } from 'type-graphql';
 import Container from 'typedi';
 
 import config from '@/config';
+import AuthResolver from '@/resolvers/auth.resolver';
 import HelloResolver from '@/resolvers/hello.resolver';
 
 const startServer = async () => {
   const schema = await buildSchema({
-    resolvers: [HelloResolver],
+    resolvers: [AuthResolver, HelloResolver],
     container: Container,
   });
 
