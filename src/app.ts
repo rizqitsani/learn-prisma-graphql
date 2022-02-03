@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
 import { ApolloServer } from 'apollo-server-express';
+import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import express from 'express';
 import { buildSchema } from 'type-graphql';
@@ -16,12 +17,16 @@ const startServer = async () => {
     container: Container,
   });
 
-  const apolloServer = new ApolloServer({ schema });
+  const apolloServer = new ApolloServer({
+    schema,
+    context: ({ req, res }) => ({ req, res }),
+  });
 
   const app = express();
 
   app.use(express.json());
   app.use(cors());
+  app.use(cookieParser());
 
   await apolloServer.start();
   apolloServer.applyMiddleware({ app });

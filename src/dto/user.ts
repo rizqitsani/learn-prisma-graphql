@@ -13,3 +13,12 @@ export class UserRegisterDto implements Partial<User> {
   @Field()
   password: string;
 }
+
+@InputType()
+export class UserLoginDto {
+  @Field()
+  email: string;
+
+  @Field()
+  password: string;
+}

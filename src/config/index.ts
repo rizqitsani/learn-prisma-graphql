@@ -11,4 +11,6 @@ if (envFound.error) {
 export default {
   env: process.env.NODE_ENV,
   port: parseInt(process.env.PORT + '', 10),
+  jwtExpire: process.env.JWT_EXPIRES_IN,
+  jwtSecret: process.env.JWT_SECRET,
 };
