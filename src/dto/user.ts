@@ -1,6 +1,6 @@
 import { Field, InputType } from 'type-graphql';
 
-import { User } from '@/models/user.model';
+import { Role, User } from '@/models/user.model';
 
 @InputType()
 export class UserRegisterDto implements Partial<User> {
@@ -12,6 +12,9 @@ export class UserRegisterDto implements Partial<User> {
 
   @Field()
   password: string;
+
+  @Field(() => Role, { nullable: true })
+  role?: keyof typeof Role;
 }
 
 @InputType()

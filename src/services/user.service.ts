@@ -19,6 +19,7 @@ export default class UserService {
         email: userRegisterDto.email,
         name: userRegisterDto.name,
         password: hashedPassword,
+        role: userRegisterDto?.role,
       },
     });
 
