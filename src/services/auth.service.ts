@@ -3,7 +3,7 @@ import { sign } from 'jsonwebtoken';
 import { Inject, Service } from 'typedi';
 
 import config from '@/config';
-import { UserLoginDto, UserRegisterDto } from '@/dto/user';
+import { UserLoginDto, UserRegisterDto } from '@/dto/auth.dto';
 import UserService from '@/services/user.service';
 
 @Service()
@@ -19,7 +19,7 @@ export default class AuthService {
       throw new Error('Email has been used!');
     }
 
-    const user = await this.userService.createUser(userRegisterDto);
+    const user = await this.userService.create(userRegisterDto);
 
     return user;
   }

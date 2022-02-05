@@ -9,12 +9,10 @@ import Container from 'typedi';
 
 import config from '@/config';
 import { customAuthChecker } from '@/middlewares/auth.middleware';
-import AuthResolver from '@/resolvers/auth.resolver';
-import HelloResolver from '@/resolvers/hello.resolver';
 
 const startServer = async () => {
   const schema = await buildSchema({
-    resolvers: [AuthResolver, HelloResolver],
+    resolvers: [__dirname + '/**/*.resolver.{ts,js}'],
     container: Container,
     authChecker: customAuthChecker,
   });

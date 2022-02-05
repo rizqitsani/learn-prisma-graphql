@@ -2,7 +2,7 @@ import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { Inject, Service } from 'typedi';
 
 import config from '@/config';
-import { UserLoginDto, UserRegisterDto } from '@/dto/user';
+import { UserLoginDto, UserRegisterDto } from '@/dto/auth.dto';
 import { Context } from '@/interfaces/context';
 import { User } from '@/models/user.model';
 import AuthService from '@/services/auth.service';
