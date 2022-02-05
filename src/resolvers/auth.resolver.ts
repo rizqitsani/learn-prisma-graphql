@@ -1,4 +1,4 @@
-import { Arg, Ctx, Mutation, Resolver } from 'type-graphql';
+import { Arg, Authorized, Ctx, Mutation, Query, Resolver } from 'type-graphql';
 import { Inject, Service } from 'typedi';
 
 import config from '@/config';
@@ -32,5 +32,11 @@ export default class AuthResolver {
     });
 
     return true;
+  }
+
+  @Query(() => User)
+  @Authorized()
+  async me(@Ctx() { req }: Context): Promise<User> {
+    return req.user;
   }
 }

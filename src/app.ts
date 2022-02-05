@@ -8,6 +8,7 @@ import { buildSchema } from 'type-graphql';
 import Container from 'typedi';
 
 import config from '@/config';
+import { customAuthChecker } from '@/middlewares/auth.middleware';
 import AuthResolver from '@/resolvers/auth.resolver';
 import HelloResolver from '@/resolvers/hello.resolver';
 
@@ -15,6 +16,7 @@ const startServer = async () => {
   const schema = await buildSchema({
     resolvers: [AuthResolver, HelloResolver],
     container: Container,
+    authChecker: customAuthChecker,
   });
 
   const apolloServer = new ApolloServer({
