@@ -39,7 +39,7 @@ export default class AuthService {
 
     const token = this.createToken(user.id);
 
-    return token;
+    return { token, user };
   }
 
   createToken(id: string) {

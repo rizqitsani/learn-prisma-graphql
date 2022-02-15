@@ -19,19 +19,20 @@ export default class AuthResolver {
     return user;
   }
 
-  @Mutation(() => Boolean)
+  @Mutation(() => User)
   async login(
     @Arg('data') userLoginDto: UserLoginDto,
     @Ctx() { res }: Context,
-  ): Promise<boolean> {
-    const token = await this.authService.login(userLoginDto);
+  ): Promise<User> {
+    const { token, user } = await this.authService.login(userLoginDto);
 
     res.cookie('access_token', token, {
       httpOnly: true,
+      secure: config.env === 'production',
       maxAge: parseInt(config.jwtExpire + '', 10) * 1000,
     });
 
-    return true;
+    return user;
   }
 
   @Query(() => User)
